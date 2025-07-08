@@ -112,15 +112,15 @@ const Body = () => {
     return  filteredListOfRestaurant.length === 0 ? <Shimmer/>:  (
         <div className="body">
               <div 
-                className="filter"> 
-                <div className="search">
-                  <input type="text" className="search-box" value={searchText}
+                className="filter flex"> 
+                <div className="search m-4 p-4 ">
+                  <input type="text" className="border border-solid border-black " value={searchText}
                    onChange={(e) =>{
                     setSearchText(e.target.value);
                           
                   }}
                   />
-                  <button  
+                  <button  className="px-4 py-2 bg-green-100 m-4"
                   onClick={() => {          
                     const filteredRestaurant = listOfRestaurant.filter(res =>  res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                     setfilteredListOfRestaurant(filteredRestaurant);
@@ -129,14 +129,15 @@ const Body = () => {
 
                 </div>
 
-                <button className="filter-btn" 
-                onClick={() =>{
+                <div>
+                  <button className="px-4 py-2 bg-gray-100" 
+                  onClick={() =>{
                    let  filteredlistOfRestaurant = listOfRestaurant.filter(res=> res.info.avgRating >4.2);
                     setfilteredListOfRestaurant(filteredlistOfRestaurant);
-
-                }} 
-                > 
-                Top Rated Restaurants</button>
+                  }} 
+                  > 
+                  Top Rated Restaurants</button>
+                </div>
               </div>
 
             <div className="res-container">

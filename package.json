@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/38rahul/BiharEssence-React#readme",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "assert": "^2.1.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
@@ -32,6 +33,7 @@
     "querystring-es3": "^0.2.1",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
+    "tailwindcss": "^4.1.11",
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vm-browserify": "^1.1.2"
