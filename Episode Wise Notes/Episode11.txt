@@ -1,0 +1,31 @@
+  #Topics Covered
+
+    1:Higher Order Component
+    2:Pure Function
+    3: Controlled vs UnControlled Component
+    4: Lifting the State uP
+    5:
+    6:
+    7:
+    8:
+
+Question: what is Higher Order COmponent ??
+--> it takes a component as an Input and enhance the same component and return 
+
+REact Application has two Layers:
+
+1: UI Layers
+2: Data Layer
+ 
+
+UI Layer : it is powered by Data Layer, The code you write inside JSX.
+Data Layer: consists of state props, Local variable, Curly Braces inside jsx i.e { }
+
+--> Senior engineer are very good at Logic of Data Layer.
+
+Accordion: open collapse feature in Swiigy or any other UI.
+
+==============  24:00 Min  In this episode we are going to see how we are prperly manage our Data Layer =============
+
+Important thing is to find the Actuall Correct data that you want to render on the page.
+

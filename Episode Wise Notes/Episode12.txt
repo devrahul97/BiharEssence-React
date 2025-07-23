@@ -1,0 +1,65 @@
+zestand similar to Redux: 
+
+Redux: primarly used for handling state of Applications.
+ -> Offers easy debugging.
+
+
+ Two Library
+
+ 1: React Redux
+ 2: Redux Toolkit: is a newer way of writing Redux.
+
+ Redux tool kit : RTK.
+
+ Redux Store is a kind of very Big JavaScript Object with a lot of Data inside it. 
+
+
+Question: Is it a good  practice to keep all the inside it ??
+
+    Yes, it is absolutely fine.
+
+
+    Slices:  prats of Redux Store is known as Slices.
+
+    To keep data Seperate we make logical Seperations that is called Slices.
+
+    Example:
+
+        Cart data in seperate Slice
+        LoggedIn data in Seperste Slice
+        user Slice
+        Theme Slice
+
+        Intially, Slice can be empty.
+
+
+
+        Dispatch an Action: 
+
+        -> When you click on the Add Button => it will dispatch an Action => Action will call a Function() => Function will modify the Cart.(Slice of the Redux Store)
+
+        FUnction is Known as Reducer function.
+
+        We have Seen How to Write Data.
+
+        ======================== Now we will See How to read Data ===================
+        it means How we will read the Data from Derux Slice and Update it into the Cart.
+
+      For that we will use something known as Selector.
+
+    So What will Happen is: 
+
+    We will use the "Selector" to read the Data from Store and Selector will modify our React Component.
+
+   This Phenomena is known as Subscribing to the Store.
+
+
+
+=> Header COmponent is Subscribe to our Store, it means basically it is in Sync with the Store.
+If the Data inside my store changes my Header Component will update Automagically.
+ 
+ => Subscribing to the Store, using "Seletor".
+
+
+
+
