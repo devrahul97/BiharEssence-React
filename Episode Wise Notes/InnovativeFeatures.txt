@@ -1,0 +1,8 @@
+
+1: Shimmer UI --> Showing the Boxes before data loads.
+2: Lazy loading Similar to Swiggy restaurant Loads
+3: Feature : Is User have an Internet or Not: it is called Online Offline feature, we have seen this feature in Swiggy/ Zomato
+
+if Messanger/ facebook you might have seen green dot. when your internet connection is active
+
+Lazy Loading

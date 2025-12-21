@@ -65,3 +65,17 @@ lossless image optimization for JPEGs and PNGs -> which reduces the size of imag
  *  
 
 */
+
+
+
+# Redux Toolkit
+   - Redux @reduxjs/toolkit and react-redux
+   - Build our Store
+   - Connect our store to our App.
+   - Slice (Cart Slice)
+   - dispatch Actions
+   - Selector.
+
+   npm install @reduxjs/toolkit
+   npm i react-redux
+   

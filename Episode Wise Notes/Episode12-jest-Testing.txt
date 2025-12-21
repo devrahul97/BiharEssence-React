@@ -1,0 +1,68 @@
+Even a Single line can create a Bug.
+
+Manual Testing
+Write code to do the testing: code that will test your code.
+
+
+3 types of Test that Developer can do
+
+1: Unit Testing
+2: Integration Testing  : these 2 are for Developers
+3: End 2 End Testing
+
+Testing is part of Developement
+
+Library
+1: React Testing Library
+2: Jest 
+
+
+jest internally used Babel
+React Testign Library uses Jest Behind the scene.
+
+
+command:
+
+npm i -D @testing-library/react
+npm i -D jest
+npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+
+
+Setting up Testing in our APP
+
+1: install react testing Library
+2: install jest
+3: Installed Babel Dependencies.
+4: Installed Babel Dependencies.
+5. Configure Babel.
+6. Configure Parcel config file to disable default babel transpilation.
+7: jest Configuration
+
+npm jest --init
+command to run test: npm run test
+
+parcel already uses Babel behind the scene and parcel has it's own configuration for Babel.
+now we are trying to add extra configuration. So parcel will get confused and it will confused with this configuration.
+
+So we will have to change parcel Behavior to use Babel along with Jest.
+
+
+Read about jest dom.
+
+
+
+
+
+
+
+
+
+=> Parcel uses Babel(transpiler) behind the scene.
+
+
+
+
+
+
+

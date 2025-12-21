@@ -1,4 +1,19 @@
-.header{
+@import "tailwindcss";
+
+/* Global cursor pointer for interactive elements */
+button:not(:disabled),
+a,
+select,
+[role="button"],
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* .header{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -76,4 +91,4 @@
 .user-card {
     padding: 10px;
     border: 1px solid black;
-}
+} */

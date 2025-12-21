@@ -1,0 +1,23 @@
+How we can make our App look Beautiful.
+
+Read about these:
+
+1: Scss vs Saas
+2: Styled Component
+3: Material UI for react.
+4: Tailwind CSS.
+5: Bootstrap 
+6: Ant Design
+7: Chakara Design
+
+
+==========================Here we are going to use Tailwaind CSS: =====================
+
+
+ Question: What is postCSS ??
+
+ --> tool to transform CSS with Javascript.
+ --> Basically when you have to transform CSS inside Javascript you use PostCSS.
+
+
+

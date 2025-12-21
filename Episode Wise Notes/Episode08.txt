@@ -1,0 +1,88 @@
+===========   Lifecycle of a Class based Component ==============
+
+How the component Loaded in the webPage
+How the component MOUNTED IN THE WEBPAGE ??
+
+Loading the componenton the web page  = Mounting the component on the web page
+
+
+How the Life cycle of Class Based Component works??
+
+==> Assume we have About Class Based component and inside that we have use User Class Based Component.
+==> Once we naviagte to about page then About class will be instantiated.
+Hence, Constructor will be called follwed with render method.
+
+Then inside render method you have used User Component then User will be instantiated Hence User Constructor will be called and then render method of User class will be called
+
+
+Hence Order of Invocation is as Follows:
+
+About Constructor -> About Render method -> User Constructor -> User render method
+
+=========ComponentDidMount() =============
+
+==> invocation in a Parent Child Relationship
+
+About.js     parent constructor
+About.js:34  parent render
+UserClass.js:16  Child constructor
+UserClass.js:35  Child render
+UserClass.js:24 Child Component Did mount
+About.js:20 Parent Component Did mount
+
+Constructor 
+Render 
+COmponent Did mount
+
+why and what is componentDidMount ?
+-> it is used to make API calls. But why API call is made inside componentDidMount ??
+
+In react component if you make an API call, we want to render the component once and make an Api call and then fill the Data inside the component.
+
+we don't want to wait for API to return the Data to render the component.
+
+Otherwise the component will not render and it will keep on waiting for the data to come from API.
+
+This way our Application seems to be fast.
+you can use Shimmer UI so that later component will be filled witht he data.
+
+
+==> React wants to quickly render it then make an API call and then fill/render the data.
+
+==> Goodle: React Lifecycle Diagram:  https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+
+======================1:34 min-=====================
+
+
+1: 44 min
+Watch this again to build your Life cycle Foundation Strong
+
+
+There is a Difference between: Mount Update and UnMount.
+
+
+componentDidUpdate() is called after every update similar to useEffect Hook
+
+=============2:17 min ==========
+
+Question: When will componentDidMount() called/used ??---
+-> when we are leaving the page/component and moving to other component.
+Example --> I'm moving from about page to contact us Page.
+
+    -> Cleanup
+    -> what kind of CleanUp ??
+
+
+
+Research Topics
+1: why do we write constructor props and  super props in Class Based Component.
+2: async componentDidMount()
+
+
+=========== 2 Innovative Ideas which we can bring into our Front End React Code Base=========
+
+1: Shimmer UI --> Showing the Boxes before data loads.
+2: Lazy loading Similar to Swiggy restaurant Loads
+
+

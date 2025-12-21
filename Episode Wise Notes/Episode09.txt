@@ -1,0 +1,80 @@
+Custom Hook
+Single Responsiblity Principal
+Modularity => Break down your code into Small modules, so that your code becomes more Maintainable and Testable.
+
+Question : How it will becomde more Testable ??
+Ans: If you have the Single unit of RestaurantCard then, So I can write the Test cases for the RestaurantCard.
+
+When you breakdown into Small- Small pieces(Components, FUnctions, utility FUnction) then
+you test each and every Small function of your code.
+
+So, whenever you are testing any component then the Test method for that component will catch the Bug.
+
+Modular Fashion.
+Re-Usablity.
+Maintable
+Testable
+
+
+=> Keep your component as Light as Possible.
+
+
+==Hook===
+
+it is a utlity jS function.
+
+
+==> CUstom Hook
+we will take out some responsiblity from a component and Extract it inside a Hook, so that our Hook and component become more Modular and Readable.
+
+
+==> innovative ideas of CUstom hook, contribute to opensource
+
+1: if you can create a custom hook then you can create utility function and export it as a package and put in in a NPM so that world can use it.
+2: Can we make a Library which exports some hooks like uselocalStorage, useSessionStorage inside your Application.
+
+So there can be lots of utility function you can build.. export it up and publish as a package.
+
+==> you can also create your packgae and push there.
+
+FEature : Is User have an Internet or Not: it is called Online Offline feature, we have seen this feature in Swiggy/ Zomato
+
+
+Question: How to write the custom hook ???
+Ans: First thing is finalize the contract, it means what is the input of the hook and what is the output of the Hook.
+
+==> Instead of turning the internet Offline Browser gives up the capablity to see how your Application looks when internet is Offline.
+
+54: 00 minute
+Linter process
+EsLinters according to react will start throwing errors when you don't follow the naming convention.
+-> Start COmponent Name with Capital Letters.
+
+Question: when we create our custom hook .. is it Mandatory to use the word "use" before you write the name of the Hook ??
+--> Not Mandatory but it's recommended by React 
+
+
+
+===============59:00 Min==================
+Question: How to optimize the Big Application.
+
+Question: What is the job of Parcel ?? 
+Ans: it Bundles our Application.
+
+what does it mean by Bundling ??
+==> it Bundles all your file and make into 1 file
+
+// Chunking = Code Spliting = Dynamic Bundling = Lazy Loading = OnDemand Loading = Dynamic Import  ==> to Break down your Apps into Smaller Logical Chunks.
+
+Logical Seperation: A Bundle should have enough code for the feature.
+
+==> Don't put a load on a Single Bundle, so that the request for the JS file does not become so heavy that it takes a lot of time to get 
+into the browser.
+
+How to do this ??
+
+==> I want to Logically Distribute my Application that My Grocery and All the component of Grocery should come from a Different Bundle.
+
+Question: How we can create a Seperate Bundle for Grocery ??
+import Grocery as a Lzay Loading, when our App loads it will not load the code for Grocery.
+
