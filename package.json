@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "proxy": "http://localhost:1234/",
   "description": "Creating production Ready Project for BiharEssence",
-  "start": "parcel index.html --open",
   "scripts": {
-    "start": "npx parcel index.html",
+    "start": "npx parcel index.html --port 1234",
     "build": "npx parcel build index.html",
-    "test": "jest"
+    "test": "jest",
+    "server": "node server-new.js",
+    "dev": "concurrently \"npm run server\" \"npm start\""
   },
   "repository": {
     "type": "git",
@@ -21,28 +22,38 @@
   },
   "homepage": "https://github.com/38rahul/BiharEssence-React#readme",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.18",
     "assert": "^2.1.0",
+    "autoprefixer": "^10.4.23",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.1",
     "events": "^3.3.0",
     "parcel": "^2.15.4",
     "path-browserify": "^1.0.1",
+    "postcss": "^8.5.6",
     "process": "^0.11.10",
     "querystring-es3": "^0.2.1",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.18",
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vm-browserify": "^1.1.2"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
+    "firebase": "^12.7.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.16.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.3"
+    "react-redux": "^9.2.0",
+    "react-router": "^7.11.0",
+    "react-select": "^5.10.2"
   }
 }

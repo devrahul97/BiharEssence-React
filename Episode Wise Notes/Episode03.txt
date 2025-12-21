@@ -8,7 +8,7 @@ Lots of developer think that both are same thing, No
 
 -> JSX is different than Html
 
-JSX is a Html like Syntax
+JSX is a Html like Syntax.
 
 
 Question ??
@@ -17,9 +17,9 @@ Question ??
 1st for humans then for machines
 
 
-transpiled the code before it goes to js engine
+transpiled the code before it goes to js engine.
 
-transpiled -> converted to the code that browser can understand.
+transpiled -> convert  the code that browser can understand.
 
 Transpiling is done by parsel -> Babel package transpile.
 
@@ -27,30 +27,28 @@ babel -> it takes your jsx and it converts it to the code that js engine underst
 
 Read about Babel
 
-
-
-
 =========================  JSX ========================
 
 If you write curly braces inside JSX, you can run any piece of js expression.
 JSX is mix of html and javascript.
 
-jsx takes care of injection attck.
-snitizes everything.
+jsx takes care of injection attack.
+it snitizes everything.
 
 
 
-cross site scripting -> it can steal cookies, read local storage, session storage, get information about your laptop
+cross site scripting -> it can steal cookies, read local storage, session storage, get information about your laptop.
 injection attack
 
 
 ================= These three things are same things==================
 {Title()}
 {<Title/>}
-{<These></Title>}
+{<Title></Title>}
 
  
 Notes:
+-----
 
 // React.CreateElement => JS Object => Render to dom=> it becomes html element(HTMl element)
 
@@ -59,7 +57,7 @@ Notes:
 // 1: Class Based component - OLD -> Uses javascript classes
 // 2: Functional Component  - NEW -> Uses Javascript Functions
 
-// React Functional Component -> it is juse a Javascript functions
+// React Functional Component -> it is just a Javascript functions
 // when you are creating any functional component name starts with capital letter otherwise you will get error
 // A functional Component is a Normal JS funtions which return some  jsx Element/code
 // A function which is returning some jsx is a functional component.
@@ -75,6 +73,10 @@ Notes:
 
 // what is component conpositions ??
 // putting one components inside another.
+
+
+
+web packs concepts: https://webpack.js.org/concepts/
 
 
 

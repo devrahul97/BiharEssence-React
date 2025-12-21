@@ -61,5 +61,36 @@ If the Data inside my store changes my Header Component will update Automagicall
  => Subscribing to the Store, using "Seletor".
 
 
+ ========== 45: 00 min ===========
+
+
+ =======================    Reducer vs Reducers   ====================
+
+ when you are creating a App Store.. here the keyword is reducer, because this is one big reducer.
+ And it can have multiple small Reducers.
+
+
+ But when we are writing slices we create multiple reducers 
+
+
+
+Redux is creating immutable State.
+
+Behind the Scene Redux uses "immer" Library.
+
+Debugging tools for Redux: Redux dev tools.
+
+
+RTK Query: Redux Thunk, Middleware now We have RTK Query.
+
+
+React Testing Library uses Jest behind the scene.
+
+
+
+
+
+
+
 
 

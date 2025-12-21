@@ -24,15 +24,26 @@ class UserClass extends React.Component {
        async componentDidMount(){
           //  console.log(this.props.name1+ " Child Component Did mount");
 
-          const data = await fetch ("https://api.github.com/user/devrahul97");
+          try {
+            const data = await fetch("https://api.github.com/users/38rahul");
 
-          const json = await data.json();
-          console.log(json);
+            const json = await data.json();
+            console.log(json);
 
-          this.setState({
-            userInfo: json,
-          } )
-          
+            this.setState({
+              userInfo: json,
+            });
+          } catch (error) {
+            console.error("Failed to fetch user data:", error);
+            // Set default values if fetch fails
+            this.setState({
+              userInfo: {
+                name: "Bihar Essence",
+                location: "Bihar, India",
+                avatar_url: "https://via.placeholder.com/150",
+              },
+            });
+          }
         }
 
         componentDidUpdate(){

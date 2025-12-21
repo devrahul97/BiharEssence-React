@@ -1,4 +1,18 @@
 @import "tailwindcss";
+
+/* Global cursor pointer for interactive elements */
+button:not(:disabled),
+a,
+select,
+[role="button"],
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* .header{
     display: flex;
     justify-content: space-between;

@@ -16,7 +16,7 @@ This is the major job of Framework or a Library
 
 folder Structure
 
-Goodle these topics and read:
+Google these topics and read:
 
 1:  react file structure and read
 
@@ -32,16 +32,17 @@ components
 Export component and import component
 
 -> whenever you have mocked data/ Hard coded data, you should never keep it in your componet file.
-This is industry standard, baest practice.
+This is industry standard, best practice.
 
 keep it inside a Seperate file. Keep it inside Utils folder -> constants.js
 
--> Keep your Constant in Capital Letter SNake Case.
+-> Keep your Constant in Capital Letter Snake Case.
 
 
-================  export imports =============
+================  export imports ==================
 
 2 types
+-------
 
    1. default export/import -> 
    2. named export/import  -> is used when in a Single file you have to export multiple things. while import use {} brackets
@@ -54,6 +55,7 @@ keep it inside a Seperate file. Keep it inside Utils folder -> constants.js
 
 
 2 Types of Export/Import 
+------------------------
 
     -> Default Export /Import
 
@@ -65,7 +67,7 @@ keep it inside a Seperate file. Keep it inside Utils folder -> constants.js
         export const Component
         import {Component} from "path";
 
---> When you have to export multiple things use Named export.
+--> When you have to export multiple things ===>  use Named export.
 
 Question Home work : Can I use default export along with Named Export ??
 
