@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Select from 'react-select';
 import { fetchProducts } from "../../utils/api";
+import { FILTER_CATEGORIES, VIEW_MODES } from "../../utils/constants";
 import { translations } from "../../utils/translations";
 import ProductCard from "./ProductCard";
 import { ProductListSkeleton } from "./Skeleton";
@@ -20,7 +21,7 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState(new Set());
-  const [viewMode, setViewMode] = useState("all"); // 'category' or 'all'
+  const [viewMode, setViewMode] = useState(VIEW_MODES.ALL);
   const [categoryProducts, setCategoryProducts] = useState({}); // Store all products by category
   const [loadingCategories, setLoadingCategories] = useState(new Set()); // Track which categories are loading
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
@@ -160,7 +161,7 @@ const Products = () => {
   }, [page]);
 
   // Get unique categories
-  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  const categories = [FILTER_CATEGORIES.ALL, ...new Set(products.map((p) => p.category))];
 
   // Filter products
   const filteredProducts = products.filter((product) => {
@@ -227,13 +228,13 @@ const Products = () => {
   };
 
   const handleViewAllProducts = () => {
-    setViewMode("all");
+    setViewMode(VIEW_MODES.ALL);
     setExpandedCategories(new Set());
     setSelectedCategory([]);
   };
 
   const handleViewByCategory = () => {
-    setViewMode("category");
+    setViewMode(VIEW_MODES.CATEGORY);
     setExpandedCategories(new Set());
   };
 
@@ -408,7 +409,7 @@ const Products = () => {
               <Select
                 isMulti
                 options={categories
-                  .filter((c) => c !== "All")
+                  .filter((c) => c !== FILTER_CATEGORIES.ALL)
                   .map((cat) => ({ value: cat, label: cat }))}
                 value={selectedCategory.map((cat) => ({
                   value: cat,
@@ -483,7 +484,7 @@ const Products = () => {
           <button
             onClick={handleViewByCategory}
             className={`px-4 sm:px-6 py-2 rounded-lg font-semibold transition-all text-sm sm:text-base ${
-              viewMode === "category"
+              viewMode === VIEW_MODES.CATEGORY
                 ? "bg-green-600 text-white shadow-lg"
                 : isDark
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -495,7 +496,7 @@ const Products = () => {
           <button
             onClick={handleViewAllProducts}
             className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              viewMode === "all"
+              viewMode === VIEW_MODES.ALL
                 ? "bg-green-600 text-white shadow-lg"
                 : isDark
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -507,7 +508,7 @@ const Products = () => {
         </div>
 
         {/* Products Display - Category View */}
-        {viewMode === "category" ? (
+        {viewMode === VIEW_MODES.CATEGORY ? (
           <div className="space-y-8">
             {Object.keys(groupedProducts).map((category) => {
               const categoryProducts = groupedProducts[category];
