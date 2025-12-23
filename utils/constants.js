@@ -78,3 +78,14 @@ export const PAYMENT_METHODS = {
   UPI: "upi",
   NET_BANKING: "netbanking",
 };
+
+// View Modes
+export const VIEW_MODES = {
+  CATEGORY: "category",
+  ALL: "all",
+};
+
+// Filter Categories
+export const FILTER_CATEGORIES = {
+  ALL: "All",
+};
