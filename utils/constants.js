@@ -22,6 +22,12 @@ export const API_ENDPOINTS = {
   ADMIN_PRODUCTS: `${API_BASE_URL}/admin/products`,
   ADMIN_ORDERS: `${API_BASE_URL}/admin/orders`,
   ADMIN_ON_DEMAND: `${API_BASE_URL}/admin/on-demand-requests`,
+
+  // Analytics
+  ANALYTICS_VISIT: `${API_BASE_URL}/analytics/visit`,
+  ANALYTICS_SIGNUP: `${API_BASE_URL}/analytics/signup`,
+  ANALYTICS_LOGIN: `${API_BASE_URL}/analytics/login`,
+  ANALYTICS_STATS: `${API_BASE_URL}/analytics/stats`,
 };
 
 export { API_BASE_URL };
