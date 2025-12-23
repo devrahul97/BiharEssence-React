@@ -340,7 +340,7 @@ const Products = () => {
         </h1>
 
         {/* Rotating Banner - Sticky on Mobile */}
-        <div className="overflow-hidden rounded-lg sm:rounded-xl shadow-2xl md:relative md:top-0 md:z-auto md:mb-6 sticky top-16 z-30">
+        <div className="overflow-hidden rounded-lg sm:rounded-xl shadow-2xl md:mb-6 sticky top-16 z-30">
           <div
             className="relative h-48 sm:h-64 md:h-80 bg-cover bg-center transition-all duration-700 ease-in-out"
             style={{

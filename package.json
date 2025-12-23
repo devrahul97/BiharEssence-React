@@ -5,7 +5,7 @@
   "description": "Creating production Ready Project for BiharEssence",
   "scripts": {
     "start": "npx parcel index.html --port 1234",
-    "build": "npx parcel build index.html",
+    "build": "npx parcel build index.html --no-source-maps",
     "test": "jest",
     "server": "node server-new.js",
     "dev": "concurrently \"npm run server\" \"npm start\""

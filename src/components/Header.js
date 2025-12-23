@@ -366,7 +366,7 @@ const Header = () => {
       {/* Removed separate cart bar - cart now in header */}
 
       <div
-        className={`shadow-2xl md:relative md:top-0 md:z-auto sticky top-0 z-50 ${
+        className={`shadow-2xl sticky top-0 z-50 ${
           isDark ? "bg-gray-800 text-white" : "bg-pink-100"
         }`}
       >
