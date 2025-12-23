@@ -20,7 +20,7 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState(new Set());
-  const [viewMode, setViewMode] = useState("category"); // 'category' or 'all'
+  const [viewMode, setViewMode] = useState("all"); // 'category' or 'all'
   const [categoryProducts, setCategoryProducts] = useState({}); // Store all products by category
   const [loadingCategories, setLoadingCategories] = useState(new Set()); // Track which categories are loading
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
