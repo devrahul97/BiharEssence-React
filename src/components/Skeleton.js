@@ -1,21 +1,20 @@
 const ProductCardSkeleton = () => {
     return (
-        <div className="w-64 p-4 m-4 bg-white rounded-lg shadow-lg animate-pulse">
-            <div className="w-full h-48 bg-gray-200 rounded-md"></div>
-            <div className="mt-3 space-y-3">
-                <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                <div className="h-4 bg-gray-200 rounded w-full"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                <div className="flex items-center justify-between mt-3">
-                    <div className="h-6 bg-gray-200 rounded w-20"></div>
-                    <div className="h-4 bg-gray-200 rounded w-16"></div>
-                </div>
-                <div className="mt-4 flex gap-2">
-                    <div className="flex-1 h-10 bg-gray-200 rounded-md"></div>
-                    <div className="flex-1 h-10 bg-gray-200 rounded-md"></div>
-                </div>
+      <div className="w-full sm:w-64 p-3 m-2 sm:m-3 bg-white rounded-lg shadow-lg animate-pulse">
+        <div className="w-full h-32 sm:h-40 bg-gray-200 rounded-md"></div>
+        <div className="mt-2 space-y-2">
+          <div className="h-4 sm:h-5 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-3 bg-gray-200 rounded w-full"></div>
+          <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+          <div className="flex items-center justify-between mt-3 gap-1 sm:gap-2">
+            <div className="flex items-baseline gap-1 sm:gap-2">
+              <div className="h-5 sm:h-6 bg-gray-200 rounded w-16"></div>
+              <div className="h-3 bg-gray-200 rounded w-10"></div>
             </div>
+            <div className="h-7 sm:h-8 bg-gray-200 rounded-lg w-16 sm:w-20"></div>
+          </div>
         </div>
+      </div>
     );
 };
 
