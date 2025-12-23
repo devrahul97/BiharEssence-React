@@ -115,7 +115,7 @@ const Login = ({ adminRoute = false }) => {
             navigate("/");
           }
         }
-      }, 1500); // Wait 1.5 seconds to show the snackbar
+      }, 1200); // Quick redirect - just enough to see the message
     } catch (err) {
       setError(err.message);
     } finally {
