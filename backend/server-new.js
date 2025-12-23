@@ -881,6 +881,128 @@ app.delete('/api/addresses/:id', authenticateToken, async (req, res) => {
     }
 });
 
+// ==================== ANALYTICS ROUTES ====================
+
+// Track site visit
+app.post('/api/analytics/visit', async (req, res) => {
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        
+        await pool.query(`
+            INSERT INTO site_visits (visit_date, visit_count, unique_visitors)
+            VALUES ($1, 1, 1)
+            ON CONFLICT (visit_date)
+            DO UPDATE SET 
+                visit_count = site_visits.visit_count + 1,
+                updated_at = CURRENT_TIMESTAMP
+        `, [today]);
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Track visit error:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Record user signup
+app.post('/api/analytics/signup', async (req, res) => {
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        
+        await pool.query(`
+            INSERT INTO user_activity (activity_date, signups_count, logins_count)
+            VALUES ($1, 1, 0)
+            ON CONFLICT (activity_date)
+            DO UPDATE SET 
+                signups_count = user_activity.signups_count + 1,
+                updated_at = CURRENT_TIMESTAMP
+        `, [today]);
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Track signup error:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Record user login
+app.post('/api/analytics/login', async (req, res) => {
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        
+        await pool.query(`
+            INSERT INTO user_activity (activity_date, signups_count, logins_count)
+            VALUES ($1, 0, 1)
+            ON CONFLICT (activity_date)
+            DO UPDATE SET 
+                logins_count = user_activity.logins_count + 1,
+                updated_at = CURRENT_TIMESTAMP
+        `, [today]);
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Track login error:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Get analytics data (Admin only)
+app.get('/api/analytics/stats', authenticateToken, isAdmin, async (req, res) => {
+    try {
+        const { range = '7' } = req.query; // default last 7 days
+        const days = parseInt(range);
+        
+        // Get visit stats
+        const visitsResult = await pool.query(`
+            SELECT visit_date, visit_count, unique_visitors
+            FROM site_visits
+            WHERE visit_date >= CURRENT_DATE - INTERVAL '${days} days'
+            ORDER BY visit_date ASC
+        `);
+        
+        // Get user activity stats
+        const activityResult = await pool.query(`
+            SELECT activity_date, signups_count, logins_count
+            FROM user_activity
+            WHERE activity_date >= CURRENT_DATE - INTERVAL '${days} days'
+            ORDER BY activity_date ASC
+        `);
+        
+        // Get total stats
+        const totalVisits = await pool.query(`
+            SELECT 
+                SUM(visit_count) as total_visits,
+                SUM(unique_visitors) as total_unique
+            FROM site_visits
+        `);
+        
+        const totalUsers = await pool.query(`
+            SELECT COUNT(*) as total_users FROM users WHERE role = 'customer'
+        `);
+        
+        const totalOrders = await pool.query(`
+            SELECT COUNT(*) as total_orders FROM orders
+        `);
+        
+        res.json({
+            success: true,
+            data: {
+                visits: visitsResult.rows,
+                activity: activityResult.rows,
+                totals: {
+                    totalVisits: parseInt(totalVisits.rows[0]?.total_visits || 0),
+                    totalUniqueVisitors: parseInt(totalVisits.rows[0]?.total_unique || 0),
+                    totalUsers: parseInt(totalUsers.rows[0]?.total_users || 0),
+                    totalOrders: parseInt(totalOrders.rows[0]?.total_orders || 0)
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Get analytics error:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);

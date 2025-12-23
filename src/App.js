@@ -1,76 +1,89 @@
 
  import { lazy, StrictMode, Suspense, useEffect } from "react";
- import ReactDOM from "react-dom/client";
- import { Provider, useDispatch, useSelector } from "react-redux";
- import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
- import appStore from "../utils/appStore";
- import { logout } from "../utils/authSlice";
- import AdminDashboard from "./components/AdminDashboard";
- import Body from "./components/Body";
- import Checkout from "./components/Checkout";
- import Contact from "./components/Contact";
- import Error from "./components/Error";
+import ReactDOM from "react-dom/client";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import appStore from "../utils/appStore";
+import { logout } from "../utils/authSlice";
+import { API_ENDPOINTS } from "../utils/constants";
+import AdminDashboard from "./components/AdminDashboard";
+import Body from "./components/Body";
+import Checkout from "./components/Checkout";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
 
- import Header from "./components/Header";
- import Login from "./components/Login";
- import OrderSuccess from "./components/OrderSuccess";
- import Orders from "./components/Orders";
- import Products from "./components/Products";
- import ProtectedRoute from "./components/ProtectedRoute";
- import RestaurantMenu from "./components/RestaurantMenu";
- import ReviewPopup from "./components/ReviewPopup";
- import Signup from "./components/Signup";
+import Header from "./components/Header";
+import Login from "./components/Login";
+import OrderSuccess from "./components/OrderSuccess";
+import Orders from "./components/Orders";
+import Products from "./components/Products";
+import ProtectedRoute from "./components/ProtectedRoute";
+import RestaurantMenu from "./components/RestaurantMenu";
+import ReviewPopup from "./components/ReviewPopup";
+import Signup from "./components/Signup";
 
- import Warehouse from "./components/Warehouse";
- // it means if you click on About then only js file of About page will be Loaded, you can verify in the network tab.
- // if you  click on cart page then cart.js will be Loaded in the the network tab.
- // this is also known as Chunking.
+import Warehouse from "./components/Warehouse";
+// it means if you click on About then only js file of About page will be Loaded, you can verify in the network tab.
+// if you  click on cart page then cart.js will be Loaded in the the network tab.
+// this is also known as Chunking.
 
- const OnDemand = lazy(() => import("./components/OnDemand"));
- const GiftProduct = lazy(() => import("./components/GiftProduct"));
- const About = lazy(() => import("./components/About"));
- const Cart = lazy(() => import("./components/Cart"));
+const OnDemand = lazy(() => import("./components/OnDemand"));
+const GiftProduct = lazy(() => import("./components/GiftProduct"));
+const About = lazy(() => import("./components/About"));
+const Cart = lazy(() => import("./components/Cart"));
 
- // styles
- const StyleCard = () => {
-   backgroundcolor: "black";
- };
+// styles
+const StyleCard = () => {
+  backgroundcolor: "black";
+};
 
- const AppLayoutContent = () => {
-   const isDark = useSelector((store) => store.theme.isDark);
-   const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
-   const dispatch = useDispatch();
+const AppLayoutContent = () => {
+  const isDark = useSelector((store) => store.theme.isDark);
+  const isAuthenticated = useSelector((store) => store.auth.isAuthenticated);
+  const dispatch = useDispatch();
 
-   // Validate token on app load
-   useEffect(() => {
-     const token = localStorage.getItem("token");
-     if (token && isAuthenticated) {
-       // Basic token validation - check if it's expired or malformed
-       try {
-         const payload = JSON.parse(atob(token.split(".")[1]));
-         if (payload.exp && payload.exp * 1000 < Date.now()) {
-           // Token expired, logout user
-           dispatch(logout());
-         }
-       } catch (error) {
-         // Invalid token format, logout user
-         dispatch(logout());
-       }
-     }
-   }, [dispatch, isAuthenticated]);
+  // Track site visit on first load
+  useEffect(() => {
+    const trackVisit = async () => {
+      try {
+        await fetch(API_ENDPOINTS.ANALYTICS_VISIT, { method: "POST" });
+      } catch (error) {
+        console.log("Analytics not available");
+      }
+    };
+    trackVisit();
+  }, []);
 
-   return (
-     <div
-       className={`app min-h-screen ${
-         isDark ? "bg-gray-900 text-white" : "bg-white text-black"
-       }`}
-     >
-       <Header />
-       <ReviewPopup />
-       <Outlet />
-     </div>
-   );
- };
+  // Validate token on app load
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token && isAuthenticated) {
+      // Basic token validation - check if it's expired or malformed
+      try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        if (payload.exp && payload.exp * 1000 < Date.now()) {
+          // Token expired, logout user
+          dispatch(logout());
+        }
+      } catch (error) {
+        // Invalid token format, logout user
+        dispatch(logout());
+      }
+    }
+  }, [dispatch, isAuthenticated]);
+
+  return (
+    <div
+      className={`app min-h-screen ${
+        isDark ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
+    >
+      <Header />
+      <ReviewPopup />
+      <Outlet />
+    </div>
+  );
+};
 
  const AppLayout = () => {
    return (

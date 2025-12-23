@@ -92,41 +92,48 @@ const Signup = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(API_ENDPOINTS.SIGNUP, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    password: formData.password,
-                    phone: formData.phone
-                }),
-            });
+          const response = await fetch(API_ENDPOINTS.SIGNUP, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              password: formData.password,
+              phone: formData.phone,
+            }),
+          });
 
-            const data = await response.json();
+          const data = await response.json();
 
-            if (!response.ok) {
-                throw new Error(data.error || 'Signup failed');
-            }
+          if (!response.ok) {
+            throw new Error(data.error || "Signup failed");
+          }
 
-            // Store token
-            localStorage.setItem('token', data.token);
+          // Store token
+          localStorage.setItem("token", data.token);
 
-            // Update Redux state with user data
-            dispatch(setUser(data.user));
-            
-            // Load user's theme and language preferences
-            if (data.user.theme) {
-                dispatch(setTheme(data.user.theme));
-            }
-            if (data.user.language) {
-                dispatch(setLanguage(data.user.language));
-            }
+          // Update Redux state with user data
+          dispatch(setUser(data.user));
 
-            // Navigate to products page
-            navigate('/');
+          // Track signup analytics
+          try {
+            await fetch(API_ENDPOINTS.ANALYTICS_SIGNUP, { method: "POST" });
+          } catch (err) {
+            // Silently fail if analytics not available
+          }
+
+          // Load user's theme and language preferences
+          if (data.user.theme) {
+            dispatch(setTheme(data.user.theme));
+          }
+          if (data.user.language) {
+            dispatch(setLanguage(data.user.language));
+          }
+
+          // Navigate to products page
+          navigate("/");
         } catch (err) {
             setError(err.message);
         } finally {
