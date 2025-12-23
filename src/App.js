@@ -6,6 +6,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import appStore from "../utils/appStore";
 import { logout } from "../utils/authSlice";
 import { API_ENDPOINTS } from "../utils/constants";
+import { initDevToolsProtection } from "../utils/devToolsProtection";
 import AdminDashboard from "./components/AdminDashboard";
 import Body from "./components/Body";
 import Checkout from "./components/Checkout";
@@ -52,6 +53,9 @@ const AppLayoutContent = () => {
       }
     };
     trackVisit();
+
+    // Initialize DevTools protection (only in production)
+    initDevToolsProtection();
   }, []);
 
   // Validate token on app load
